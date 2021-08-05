@@ -1,21 +1,15 @@
-version: "3"
+steps:
+# Clone the repository.
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - clone
+  - '--depth'
+  - '1'
+  - https://github.com/xxicheng/django-cloud.git
 
-services:
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_DB=ac_bank_database
-      - POSTGRES_USER=my_django_user
-      - POSTGRES_PASSWORD=12345
-  dj:
-    container_name: dj
-    build: django
-    command: python manage.py runserver 0.0.0.0:80
-    volumes:
-      - ./django:/code
-    ports:
-      - "80:80"
-    depends_on:
-      - db
-    environment:
-      - DJANGO_SETTINGS=dev
+# Build and tag the image.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/southern-field-305921/version1', './django-cloud/django']
+
+# Publish the image to Container Registry.
+images: ['gcr.io/southern-field-305921/version1']
