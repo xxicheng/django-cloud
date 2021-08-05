@@ -75,19 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todoproj.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-'''
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -96,12 +84,20 @@ DATABASES = {
         'PASSWORD': 'uch1c@g0debit',
         'HOST': '34.70.139.80',
         'PORT': '5432',
-        #'OPTIONS': {
-         #   'sslmode': 'verify-ca', #leave this line intact
-          #  'sslrootcert': 'server-ca.pem',
-           # "sslcert": "client-cert.pem",
-            #"sslkey": "client-key.pem",
-        #}
+    }
+}
+'''
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DB_NAME_DJANGO'],
+        'USER': os.environ['DB_USER_DJANGO'],
+        'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
+        'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
+        'PORT': 5432,
     }
 }
 
