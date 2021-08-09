@@ -4,4 +4,3 @@ psycopg2
 
 uWSGI==2.0.17.1
 python-decouple==3.4
-dotenv==0.0.5
