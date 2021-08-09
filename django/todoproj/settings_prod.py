@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-import dotenv
+from decouple import config
+#import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,15 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-+)=wff08w$*q_@ij-2$0=koe$akg0srlrgi#*+03@atb)o82uo'
-#SECRET_KEY = config('SECRET_KEY')
-
-# Add .env variables anywhere before SECRET_KEY
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+SECRET_KEY = config('SECRET_KEY')
 
 # UPDATE secret key
-SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
+#SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -97,10 +93,7 @@ DATABASES = {
 '''
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-# Add .env variables anywhere before SECRET_KEY
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+
 
 DATABASES = {
     'default': {
