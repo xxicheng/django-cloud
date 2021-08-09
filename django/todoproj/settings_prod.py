@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'todoproj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ac_bank_database',
-        'USER': 'postgres',
-        'PASSWORD': 'uch1c@g0debit',
-        'HOST': '34.70.139.80',
-        'PORT': '5432',
+        'NAME': os.environ['DB_NAME_DJANGO'],
+        'USER': os.environ['DB_USER_DJANGO'],
+        'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
+        'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
+        'PORT': 5432,
     }
 }
 
@@ -98,11 +98,11 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DB_NAME_DJANGO'],
-        'USER': os.environ['DB_USER_DJANGO'],
-        'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
-        'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
-        'PORT': 5432,
+        'NAME': 'ac_bank_database',
+        'USER': 'postgres',
+        'PASSWORD': 'uch1c@g0debit',
+        'HOST': '34.70.139.80',
+        'PORT': '5432',
     }
 }
 
