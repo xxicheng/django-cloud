@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-from decouple import config
+#from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -86,9 +86,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-'''
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -99,6 +97,22 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+'''
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+#SECRET_KEY = config('SECRET_KEY')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME_DJANGO'),
+        'USER': config('DB_USER_DJANGO'),
+        'PASSWORD': config('DB_PASSWORD_DJANGO'),
+        'HOST': config('CLOUD_SQL_INSTANCE_IP'),
+        'PORT': 5432,
+    }
+}
+
 
 
 # Password validation
