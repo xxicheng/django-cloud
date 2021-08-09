@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 #from decouple import config
-
+import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-+)=wff08w$*q_@ij-2$0=koe$akg0srlrgi#*+03@atb)o82uo'
-SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = config('SECRET_KEY')
+
+# Add .env variables anywhere before SECRET_KEY
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
+# UPDATE secret key
+SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -87,6 +95,14 @@ DATABASES = {
     }
 }
 
+'''
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# Add .env variables anywhere before SECRET_KEY
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -94,21 +110,6 @@ DATABASES = {
         'USER': os.environ['DB_USER_DJANGO'],
         'PASSWORD': os.environ['DB_PASSWORD_DJANGO'],
         'HOST': os.environ['CLOUD_SQL_INSTANCE_IP'],
-        'PORT': 5432,
-    }
-}
-'''
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-#SECRET_KEY = config('SECRET_KEY')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME_DJANGO'),
-        'USER': config('DB_USER_DJANGO'),
-        'PASSWORD': config('DB_PASSWORD_DJANGO'),
-        'HOST': config('CLOUD_SQL_INSTANCE_IP'),
         'PORT': 5432,
     }
 }
