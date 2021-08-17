@@ -21,6 +21,8 @@ from todoapi import views as todoapi_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/task/', todoapi_views.TaskList.as_view(), name='task-list'),
-    path('api/task/<int:task_id>/', todoapi_views.TaskDetail.as_view(), name='task-detail'),
+    path('api/complaint/', todoapi_views.TaskList.as_view(), name='complaint-list'),
+    path('api/complaint/"project_number"=<project_number>/', todoapi_views.TaskDetail.as_view(), name='complaint-detail'),
+    path('api/complaint/"country"=<country>/', todoapi_views.TaskByCountry.as_view(), name='complaint-by-country'),
+    #path('api/complaints/<int:task_id>/', todoapi_views.TaskDetail.as_view(), name='complaint-detail'),
 ] 

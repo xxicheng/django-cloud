@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 #SECRET_KEY = os.environ['SECRET_KEY'] # Instead of your actual secret key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True # False when running on the cloud
 
 ALLOWED_HOSTS = ['*']
 

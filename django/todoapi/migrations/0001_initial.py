@@ -4,6 +4,7 @@ import datetime
 from django.db import migrations, models
 
 
+"""
 class Migration(migrations.Migration):
 
     initial = True
@@ -27,3 +28,41 @@ class Migration(migrations.Migration):
             },
         ),
     ]
+
+
+"""
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Task',
+            fields=[
+                ('project_status', models.CharField("Project Status", max_length=50)),
+                ('project_country', models.CharField("Project Country", max_length=50)),
+                ('year', models.CharField("year", max_length=50)),
+                ('month', models.CharField("month", max_length=50)),
+                ('project_name', models.CharField("Project Name", max_length=50)),
+                ('company', models.CharField("company", max_length=50)),
+                ('project_number', models.CharField("Project Number", primary_key = True, max_length=50)),
+                ('sector', models.CharField("Project Sector", max_length=50)),
+                ('bank', models.CharField("Project Bank", max_length=50)),
+                ('url', models.CharField("Project URL", max_length=50)),
+                ('loan_amount', models.CharField(db_column="Loan Amount", max_length=50)),
+                ('currency', models.CharField(db_column="currency", max_length=50)),	
+                ('loan_amount_in_usd', models.CharField(db_column="Loan Amount in USD", max_length=50))
+
+            ],
+            options={
+                'db_table': 'complaints',
+                #'ordering': ['id'],
+            },
+        ),
+    ]
+
